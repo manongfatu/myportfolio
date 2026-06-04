@@ -1,0 +1,1250 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jurris Leuwe Tolosa — Web Developer & Graphic Designer</title>
+    <meta name="description" content="Jurris Leuwe Tolosa — Creative Web Developer & Graphic Designer with 7 years of experience. WordPress, Divi, Elementor, custom dev, branding, Web3." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="favicon.svg" />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      (function () {
+        var t = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <script>
+      // Animated canvas favicon
+      (function () {
+        function animFavicon() {
+          var c = document.createElement("canvas");
+          c.width = c.height = 64;
+          var ctx = c.getContext("2d");
+          var hue = 260,
+            step = 0;
+          function draw() {
+            hue = (hue + 0.8) % 360;
+            var g = ctx.createLinearGradient(0, 0, 64, 64);
+            g.addColorStop(0, "hsl(" + hue + ",75%,60%)");
+            g.addColorStop(1, "hsl(" + (hue + 60) + ",85%,55%)");
+            ctx.clearRect(0, 0, 64, 64);
+            // rounded rect
+            ctx.beginPath();
+            var r = 12;
+            ctx.moveTo(r, 0);
+            ctx.lineTo(64 - r, 0);
+            ctx.arcTo(64, 0, 64, r, r);
+            ctx.lineTo(64, 64 - r);
+            ctx.arcTo(64, 64, 64 - r, 64, r);
+            ctx.lineTo(r, 64);
+            ctx.arcTo(0, 64, 0, 64 - r, r);
+            ctx.lineTo(0, r);
+            ctx.arcTo(0, 0, r, 0, r);
+            ctx.fillStyle = g;
+            ctx.fill();
+            // JT text
+            ctx.font = "bold 28px system-ui,sans-serif";
+            ctx.fillStyle = "rgba(255,255,255,0.95)";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("JT", 32, 34);
+            // brackets
+            ctx.strokeStyle = "rgba(255,255,255,0.35)";
+            ctx.lineWidth = 2.5;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(8, 18);
+            ctx.lineTo(4, 32);
+            ctx.lineTo(8, 46);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(56, 18);
+            ctx.lineTo(60, 32);
+            ctx.lineTo(56, 46);
+            ctx.stroke();
+            // update favicon
+            var link = document.querySelector('link[rel="icon"]') || document.createElement("link");
+            link.rel = "icon";
+            link.href = c.toDataURL();
+            if (!link.parentNode) document.head.appendChild(link);
+            requestAnimationFrame(draw);
+          }
+          draw();
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", animFavicon);
+        } else {
+          animFavicon();
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="site-wrap">
+      <!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home" class="nav-logo" aria-label="Jurris Leuwe Tolosa Home">
+          <div class="nav-logo-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <span>Jurris Leuwe Tolosa</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-end">
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+          <a href="#contact" class="btn-hire">Hire Me</a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+
+      <div class="mob-nav" id="mob-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     HERO  (Developer X reference layout)
+══════════════════════════════════════════ -->
+      <div class="hero" id="home">
+        <!-- Left content -->
+        <div class="hero-left">
+          <p class="hero-eyebrow">Web Developer &amp; Graphic Designer</p>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <h1 class="hero-h1">I'm Jurris,<br />a <span class="hl">Creative</span><br />Web Developer</h1>
+          <p class="hero-sub">7 years building purposeful websites, bold brand identities, and Web3 campaigns that get attention and drive real action.</p>
+          <div class="hero-cta">
+            <a href="#portfolio" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+              </svg>
+              View My Work
+            </a>
+            <a href="#contact" class="btn-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+              Let's Talk
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-n cnt" data-target="7" data-suffix="+">7+</span>
+              <span class="stat-l">Years Exp.</span>
+            </div>
+            <div class="stat">
+              <span class="stat-n cnt" data-target="30" data-suffix="+">30+</span>
+              <span class="stat-l">Websites</span>
+            </div>
+            <div class="stat">
+              <span class="stat-n cnt" data-target="50" data-suffix="+">50+</span>
+              <span class="stat-l">Projects</span>
+            </div>
+          </div>
+          <a href="#about" class="hero-scroll" aria-label="Scroll down">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <polyline points="19 12 12 19 5 12" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Center photo — bleeds full height, dark bg merges -->
+        <div class="hero-photo-col" aria-hidden="true">
+          <img src="images/profile_hero.png" alt="Jurris Leuwe Tolosa" />
+        </div>
+
+        <!-- Right sidebar — Developer X style panels -->
+        <aside class="hero-sidebar" aria-label="Quick summary">
+          <div class="hs-panel">
+            <div class="hs-label">About Me</div>
+            <p class="hs-text">Creative Web Developer &amp; Graphic Designer with 7 years building digital experiences for brands, startups, and Web3 communities.</p>
+            <a href="#about" class="hs-link"
+              >Learn more
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+          <div class="hs-panel">
+            <div class="hs-label">My Work</div>
+            <p class="hs-text">From 30+ WordPress sites and brand identities to NFT collections and live webcasts — work that gets attention and drives results.</p>
+            <a href="#portfolio" class="hs-link"
+              >Browse portfolio
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+          <div class="hs-panel">
+            <div class="hs-label">Follow Me</div>
+            <div class="hs-socials">
+              <a href="https://www.facebook.com/jorislowi/" target="_blank" rel="noopener" class="hs-soc" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/jleuwe" target="_blank" rel="noopener" class="hs-soc" aria-label="LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="https://behance.net/jleuwe" target="_blank" rel="noopener" class="hs-soc" aria-label="Behance">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12c0-1.7 1.3-3 3-3h4.5c1.4 0 2.5 1.1 2.5 2.5S10.9 14 9.5 14H5" />
+                  <path d="M2 12V8h7c1.1 0 2 .9 2 2v4H2v-2z" stroke="none" fill="none" />
+                  <rect x="13" y="9" width="9" height="2" />
+                  <path d="M13 15c0-3 9-3 9 0" />
+                  <path d="M2 7h10M13 7h8" />
+                </svg>
+              </a>
+              <a href="mailto:jurrisleuwetolosa@gmail.com" class="hs-soc" aria-label="Email">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <!-- /hero -->
+
+      <!-- ══════════════════════════════════════════
+     SKILLS TICKER STRIP
+══════════════════════════════════════════ -->
+      <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker-track" id="ticker">
+          <!-- repeated twice for seamless loop -->
+          <script>
+            var skills = [
+              ["WordPress", "M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"],
+              ["Divi Builder", "M12 2l10 7-10 7L2 9z"],
+              ["Elementor Pro", "M3 3h18v18H3z"],
+              ["WooCommerce", "M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"],
+              ["PHP", "M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"],
+              ["HTML & CSS", "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"],
+              ["JavaScript", "M16 18l2-2-2-2M8 6L6 8l2 2"],
+              ["Figma", "M12 2H8a4 4 0 000 8h4V2zM12 10H8a4 4 0 000 8h4V10zM12 2h4a4 4 0 010 8h-4V2zM16 14a4 4 0 01-4 4v-8a4 4 0 014 4z"],
+              ["Illustrator", "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"],
+              ["Photoshop", "M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"],
+              ["WPEngine", "M22 12h-4l-3 9L9 3l-3 9H2"],
+              ["Cloudflare", "M17.5 9.5c.3-.9.5-1.9.5-3a6 6 0 00-12 0c0 1.1.2 2.1.5 3A4 4 0 008 17h8a4 4 0 001.5-7.5z"],
+              ["OBS Studio", "M23 7l-7 5 7 5V7zM1 5h15v14H1z"],
+              ["Restream", "M22 12A10 10 0 1 1 12 2"],
+              ["Web3 / NFTs", "M21 12a9 9 0 11-18 0 9 9 0 0118 0z"],
+            ];
+            var html = "";
+            for (var r = 0; r < 2; r++) {
+              skills.forEach(function (s) {
+                html += '<div class="ticker-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="' + s[1] + '"/></svg>' + s[0] + "</div>";
+              });
+            }
+            document.getElementById("ticker").innerHTML = html;
+          </script>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+      <section class="about-section" id="about">
+        <div class="about-grid">
+          <!-- Left: bio + tech + bento -->
+          <div>
+            <div class="fu">
+              <p class="tag">My Story</p>
+              <h2 class="section-title" style="margin-bottom: 24px">I've been building websites<br /><span class="hl">since 2018</span></h2>
+            </div>
+            <div class="fu fd1">
+              <p class="about-text" style="font-size: 0.92rem; color: var(--c-text2); line-height: 1.8; margin-bottom: 16px">I'm <strong>Jurris Leuwe Tolosa</strong>, a Web Developer and Graphic Designer with <strong>7 years of hands-on experience</strong> helping brands stand out online. I specialize in WordPress development, UI/UX design, branding, and Web3 campaigns.</p>
+              <p style="font-size: 0.92rem; color: var(--c-text2); line-height: 1.8; margin-bottom: 16px">Currently at <strong>ALTTOS Innovation Corp.</strong>, I manage and maintain <strong>30+ client websites</strong>, handling custom plugin development, API integrations, and performance optimization. I also co-founded the <strong>Davao DeFi Community</strong> as Technical Lead and Creative Director.</p>
+            </div>
+
+            <div class="fu fd2">
+              <p class="stack-label">Tech Stack</p>
+              <div class="tag-cloud">
+                <span class="tag-pill">WordPress</span><span class="tag-pill">Divi</span> <span class="tag-pill">Elementor Pro</span><span class="tag-pill">WooCommerce</span> <span class="tag-pill">PHP</span><span class="tag-pill">HTML / CSS</span> <span class="tag-pill">JavaScript</span><span class="tag-pill">WPEngine</span> <span class="tag-pill">Cloudflare</span><span class="tag-pill">API Integration</span> <span class="tag-pill">Figma</span><span class="tag-pill">Illustrator</span> <span class="tag-pill">Photoshop</span><span class="tag-pill">Canva</span>
+                <span class="tag-pill">OBS / Restream</span><span class="tag-pill">Web3 / NFTs</span>
+              </div>
+            </div>
+
+            <div class="fu fd3">
+              <p class="bento-label">My Strengths</p>
+              <div class="bento">
+                <div class="bc bc-wide">
+                  <div class="bc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </div>
+                  <div class="bc-name">Multi-Site WordPress Management</div>
+                  <div class="bc-desc">Proven record managing 30+ live client websites simultaneously — maintaining performance, security, and uptime across all properties.</div>
+                </div>
+                <div class="bc">
+                  <div class="bc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                      <path d="M2 2l7.586 7.586" />
+                      <circle cx="11" cy="11" r="2" />
+                    </svg>
+                  </div>
+                  <div class="bc-name">Design-to-Code</div>
+                  <div class="bc-desc">From Figma or Illustrator to pixel-perfect code — no handoff gaps.</div>
+                </div>
+                <div class="bc">
+                  <div class="bc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="13 2 13 9 20 9" />
+                      <path d="M21 17.5V22H3v-4.5a2 2 0 012-2h14a2 2 0 012 2zM13 2H6a2 2 0 00-2 2v13h2V4h7V2z" />
+                    </svg>
+                  </div>
+                  <div class="bc-name">Fast Delivery</div>
+                  <div class="bc-desc">Structured build process from asset prep to launch — clean, on time, every time.</div>
+                </div>
+                <div class="bc">
+                  <div class="bc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                      <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+                    </svg>
+                  </div>
+                  <div class="bc-name">API Integration</div>
+                  <div class="bc-desc">Real-time price feeds, third-party APIs, custom JS/PHP solutions.</div>
+                </div>
+                <div class="bc">
+                  <div class="bc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87V15.13a1 1 0 01-1.447.9L15 14M3 8h12v8H3z" /></svg>
+                  </div>
+                  <div class="bc-name">Webcast Production</div>
+                  <div class="bc-desc">Full OBS setup, scene design, and multi-platform live broadcasting.</div>
+                </div>
+                <div class="bc bc-wide">
+                  <div class="bc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a1 1 0 011 1v3a1 1 0 01-1 1h-1v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1H2a1 1 0 01-1-1v-3a1 1 0 011-1h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z" /></svg>
+                  </div>
+                  <div class="bc-name">AI-Augmented Workflow</div>
+                  <div class="bc-desc">I integrate Claude, ChatGPT, Gemini, and Lovable AI into development and design workflows — faster execution, smarter solutions, always human-directed.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: experience timeline -->
+          <div>
+            <div class="fu">
+              <p class="tag">My Experience</p>
+              <h2 class="section-title" style="margin-bottom: 28px">Over 7 years of experience<br /><span class="hl">and 50+ projects</span></h2>
+            </div>
+            <div class="exp-list">
+              <div class="exp-card fu fd1">
+                <div class="exp-head">
+                  <span class="exp-title">Web Developer &amp; Graphic Designer</span>
+                  <span class="exp-date">2019 – Present</span>
+                </div>
+                <div class="exp-co">ALTTOS Innovation Corp.</div>
+                <p class="exp-desc">Manage and maintain 30+ client websites using WordPress, Divi, and custom code. Handle API integrations, real-time price feeds, WPEngine hosting, Cloudflare, and SEO.</p>
+              </div>
+              <div class="exp-card fu fd2">
+                <div class="exp-head">
+                  <span class="exp-title">Co-Founder, Technical Lead &amp; Creative Director</span>
+                  <span class="exp-date">2022 – Present</span>
+                </div>
+                <div class="exp-co">Davao DeFi Community (DDC)</div>
+                <p class="exp-desc">Built and manage the community website. Design all event graphics, host webcasts, speak at blockchain conferences, and lead committee growth.</p>
+              </div>
+              <div class="exp-card fu fd3">
+                <div class="exp-head">
+                  <span class="exp-title">Freelance WordPress Developer</span>
+                  <span class="exp-date">2022 – 2024</span>
+                </div>
+                <div class="exp-co">Shipping Containers Company</div>
+                <p class="exp-desc">Built and maintained WordPress sites for a logistics company, including custom modules and theme development.</p>
+              </div>
+              <div class="exp-card fu fd4">
+                <div class="exp-head">
+                  <span class="exp-title">Product Designer &amp; Co-Creator</span>
+                  <span class="exp-date">2022</span>
+                </div>
+                <div class="exp-co">Ryori — QR Ordering System</div>
+                <p class="exp-desc">Co-created a QR-code restaurant ordering system. Handled all UI/UX design, branding, and launch graphics.</p>
+              </div>
+              <div class="exp-card fu fd1">
+                <div class="exp-head">
+                  <span class="exp-title">Web &amp; Branding Design</span>
+                  <span class="exp-date">2018 – Present</span>
+                </div>
+                <div class="exp-co">Freelance</div>
+                <p class="exp-desc">Logo design, brand kits, promotional graphics, website builds for clients across various industries including automotive, dental, hospitality, and Web3.</p>
+              </div>
+              <div class="exp-card fu fd1">
+                <div class="exp-head">
+                  <span class="exp-title">Freelance Web Developer</span>
+                  <span class="exp-date">2025 – Present</span>
+                </div>
+                <div class="exp-co">Cursor + Vercel / Netlify Projects</div>
+                <p class="exp-desc">Building fast, small-to-medium scale web projects using AI-assisted development with Cursor. Participated in Web2 and Web3 hackathons — shipped <a href="http://bleenkz-v2.vercel.app/" target="_blank" rel="noopener" style="color:var(--c-accent)">Bleenkz</a> live on Vercel during a hackathon using Cursor.</p>
+              </div>
+              <div class="exp-card fu fd2">
+                <div class="exp-head">
+                  <span class="exp-title">Freelance Customer Support</span>
+                  <span class="exp-date">2025 – 2026</span>
+                </div>
+                <div class="exp-co">Shopify + Frontapp</div>
+                <p class="exp-desc">Handled customer needs, store updates, and inquiries for eCommerce clients via Shopify and Frontapp over 1 year.</p>
+              </div>
+              <div class="exp-card fu fd3">
+                <div class="exp-head">
+                  <span class="exp-title">Information Technology Intern</span>
+                  <span class="exp-date">2016</span>
+                </div>
+                <div class="exp-co">Osomnimedia Web Design Studio</div>
+                <p class="exp-desc">Gained foundational experience in web design and development at a professional web studio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ══════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════ -->
+      <section class="services-section" id="services">
+        <div class="fu">
+          <p class="tag">What I Do</p>
+          <h2 class="section-title">Services &amp; <span class="hl">Expertise</span></h2>
+        </div>
+
+        <!-- ── FEATURED: Web Development ── -->
+        <div class="svc-featured fu">
+          <div class="svc-featured-left">
+            <div class="svc-featured-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Primary Service
+            </div>
+            <h3 class="svc-featured-title">Web Development</h3>
+            <p class="svc-featured-desc">My core expertise — I build fast, clean, production-ready websites. From custom WordPress builds with Divi &amp; Elementor Pro to modern deployments with Cursor + Vercel/Netlify. 7+ years, 30+ live sites maintained.</p>
+            <div class="svc-featured-chips">
+              <span class="chip">WordPress</span><span class="chip">Divi</span><span class="chip">Elementor Pro</span>
+              <span class="chip">PHP</span><span class="chip">HTML/CSS/JS</span><span class="chip">WPEngine</span>
+              <span class="chip">Cursor</span><span class="chip">Vercel</span><span class="chip">Netlify</span>
+            </div>
+          </div>
+          <div class="svc-featured-right">
+            <div class="svc-feat-stat">
+              <span class="svc-feat-n">30+</span>
+              <span class="svc-feat-l">Live Sites</span>
+            </div>
+            <div class="svc-feat-stat">
+              <span class="svc-feat-n">7+</span>
+              <span class="svc-feat-l">Years Exp.</span>
+            </div>
+            <div class="svc-feat-stat">
+              <span class="svc-feat-n">50+</span>
+              <span class="svc-feat-l">Projects Done</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="svc-grid">
+          <div class="svc-card fu fd1">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3 class="svc-title">WordPress Development</h3>
+            <p class="svc-desc">Custom WordPress sites with Divi or Elementor Pro — custom modules, plugins, themes using HTML, CSS, JS, and PHP. Hosting via WPEngine with Cloudflare for speed and security.</p>
+            <div class="svc-chips"><span class="chip">WordPress</span><span class="chip">Divi</span><span class="chip">Elementor</span><span class="chip">PHP</span><span class="chip">WPEngine</span></div>
+          </div>
+
+          <div class="svc-card fu fd2">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+            </div>
+            <h3 class="svc-title">Shopify &amp; Customer Support</h3>
+            <p class="svc-desc">Freelance customer support experience handling store updates, customer inquiries, and operational needs via Shopify and Frontapp. 1 year of hands-on support work (2025–2026).</p>
+            <div class="svc-chips"><span class="chip">Shopify</span><span class="chip">Frontapp</span><span class="chip">Customer Support</span><span class="chip">eCommerce Ops</span></div>
+          </div>
+
+          <div class="svc-card fu fd3">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
+              </svg>
+            </div>
+            <h3 class="svc-title">Graphic Design &amp; Branding</h3>
+            <p class="svc-desc">Logos, brand kits, social media graphics, promotional banners, NFT art, and print-ready collateral. Designs that communicate your brand identity clearly anywhere.</p>
+            <div class="svc-chips"><span class="chip">Illustrator</span><span class="chip">Photoshop</span><span class="chip">Figma</span><span class="chip">Canva</span></div>
+          </div>
+
+          <div class="svc-card fu fd1">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 7l-7 5 7 5V7z" />
+                <rect x="1" y="5" width="15" height="14" rx="2" />
+              </svg>
+            </div>
+            <h3 class="svc-title">Webcast Production</h3>
+            <p class="svc-desc">Design and operate professional webcasts — custom OBS scenes, overlays, lower-thirds, and speaker titles. Multi-platform broadcasting via Restream to Facebook, YouTube, and more.</p>
+            <div class="svc-chips"><span class="chip">OBS Studio</span><span class="chip">Restream</span><span class="chip">Scene Design</span></div>
+          </div>
+
+          <div class="svc-card fu fd2">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3 class="svc-title">API Integration &amp; Custom Dev</h3>
+            <p class="svc-desc">Custom price feeds with real-time updates, third-party API integrations, and bespoke JavaScript/PHP functionality tailored to your platform's exact requirements.</p>
+            <div class="svc-chips"><span class="chip">REST APIs</span><span class="chip">JavaScript</span><span class="chip">PHP</span></div>
+          </div>
+
+          <div class="svc-card fu fd3">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+            </div>
+            <h3 class="svc-title">Web3 &amp; Community</h3>
+            <p class="svc-desc">NFT collection creation, Web3 platform branding, community-focused websites, and educational content for blockchain and DeFi audiences.</p>
+            <div class="svc-chips"><span class="chip">Web3</span><span class="chip">NFT Design</span><span class="chip">DeFi</span><span class="chip">Community</span></div>
+          </div>
+
+          <div class="svc-card fu fd1">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="svc-title">Cursor + Vercel / Netlify</h3>
+            <p class="svc-desc">Fast small-to-medium scale project deployments using AI-assisted coding with Cursor paired with Vercel or Netlify. 1 year of hands-on experience shipping production sites quickly.</p>
+            <div class="svc-chips"><span class="chip">Cursor</span><span class="chip">Vercel</span><span class="chip">Netlify</span><span class="chip">AI-Assisted Dev</span></div>
+          </div>
+
+          <div class="svc-card fu fd2">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/></svg>
+            </div>
+            <h3 class="svc-title">Hackathon Development</h3>
+            <p class="svc-desc">Competed in Web2 and Web3 hackathons — including building <a href="http://bleenkz-v2.vercel.app/" target="_blank" rel="noopener" style="color:var(--c-accent);text-decoration:underline;text-underline-offset:3px">Bleenkz</a>, a vibe-coded project built with Cursor and deployed on Vercel under hackathon pressure.</p>
+            <div class="svc-chips"><span class="chip">Web2</span><span class="chip">Web3</span><span class="chip">Cursor</span><span class="chip">Vercel</span></div>
+          </div>
+        </div>
+
+        <!-- AI Banner -->
+        <div class="ai-bar fu">
+          <div class="ai-bar-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a1 1 0 011 1v3a1 1 0 01-1 1h-1v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1H2a1 1 0 01-1-1v-3a1 1 0 011-1h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z" />
+              <circle cx="9" cy="14" r="1" fill="currentColor" />
+              <circle cx="15" cy="14" r="1" fill="currentColor" />
+            </svg>
+          </div>
+          <div>
+            <h4>AI-Augmented Development &amp; Design</h4>
+            <p>I strategically use AI tools to accelerate development, optimize code structure, and generate creative directions — keeping full human oversight and creative intent at the center. AI is my power tool, not a shortcut.</p>
+            <div class="ai-chips"><span class="ai-chip">Claude</span><span class="ai-chip">ChatGPT</span><span class="ai-chip">Gemini</span> <span class="ai-chip">Cursor</span><span class="ai-chip">Lovable AI</span><span class="ai-chip">GitHub Copilot</span> <span class="ai-chip">Midjourney</span><span class="ai-chip">Adobe Firefly</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ══════════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════════ -->
+      <section class="portfolio-section" id="portfolio">
+        <div class="port-top fu">
+          <div>
+            <p class="tag">My Portfolio</p>
+            <h2 class="section-title">Take a look at my<br /><span class="hl">latest projects</span></h2>
+          </div>
+          <div class="filter-row">
+            <button class="f-btn active" data-filter="all">All</button>
+            <button class="f-btn" data-filter="web">Web Dev</button>
+            <button class="f-btn" data-filter="branding">Branding</button>
+            <button class="f-btn" data-filter="logo">Logo</button>
+            <button class="f-btn" data-filter="graphic">Graphic</button>
+            <button class="f-btn" data-filter="web3">Web3</button>
+            <button class="f-btn" data-filter="webcast">Webcast</button>
+            <button class="f-btn" data-filter="email">Email</button>
+          </div>
+        </div>
+
+        <div class="masonry">
+          <!-- WEB DEV -->
+          <div class="p-item" data-category="web" data-title="Nexus Worldbook">
+            <img src="images/Website Development/Nexus Worldbook.png" alt="Nexus Worldbook" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web Development</div>
+              <div class="p-name">Nexus Worldbook</div>
+              <div class="p-tech"><span class="p-tech-pill">WordPress</span><span class="p-tech-pill">Divi</span><span class="p-tech-pill">PHP</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                Click to view &middot; click again to zoom
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web" data-title="NFTYFY Platform">
+            <img src="images/Website Development/NFTYFY.png" alt="NFTYFY Platform" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web Development</div>
+              <div class="p-name">NFTYFY Platform</div>
+              <div class="p-tech"><span class="p-tech-pill">WordPress</span><span class="p-tech-pill">Divi</span><span class="p-tech-pill">JS</span><span class="p-tech-pill">API</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web" data-title="Marquiss Exchange">
+            <img src="images/Website Development/Marquiss.png" alt="Marquiss Exchange" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web Development</div>
+              <div class="p-name">Marquiss Exchange</div>
+              <div class="p-tech"><span class="p-tech-pill">WordPress</span><span class="p-tech-pill">Divi</span><span class="p-tech-pill">PHP</span><span class="p-tech-pill">API</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web" data-title="Davao DeFi Community">
+            <img src="images/Website Development/Home-Davao-DeFi-Community-10-04-2024_07_36_PM 1.png" alt="Davao DeFi Community" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web Development</div>
+              <div class="p-name">Davao DeFi Community</div>
+              <div class="p-tech"><span class="p-tech-pill">WordPress</span><span class="p-tech-pill">Elementor</span><span class="p-tech-pill">Bluehost</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web" data-title="WL Template">
+            <img src="images/Website Development/WL Template 1.png" alt="WL Template" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web Development</div>
+              <div class="p-name">WL Template</div>
+              <div class="p-tech"><span class="p-tech-pill">WordPress</span><span class="p-tech-pill">Divi</span><span class="p-tech-pill">HTML/CSS</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <!-- BRANDING -->
+          <div class="p-item" data-category="branding web3" data-title="Rampz — Brand Kit">
+            <img src="images/Branding Design - Rampz (Web 3 Project)/image 15.png" alt="Rampz Brand Kit" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Branding</div>
+              <div class="p-name">Rampz P2P Exchange</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="branding web3" data-title="Rampz — Social Graphics">
+            <img src="images/Branding Design - Rampz (Web 3 Project)/image 16.png" alt="Rampz Social" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Branding</div>
+              <div class="p-name">Rampz — Social Graphics</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="branding web3" data-title="Rampz — Banners">
+            <img src="images/Branding Design - Rampz (Web 3 Project)/image 19.png" alt="Rampz Banners" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Branding</div>
+              <div class="p-name">Rampz — Banners</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <!-- LOGO -->
+          <div class="p-item" data-category="logo web3" data-title="Claimz — Web3 App">
+            <img src="images/Logo Design - Claimz (Web 3 Project)/image 14.png" alt="Claimz Logo" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">Claimz — Web3 App</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="Estela Dental Clinic">
+            <img src="images/Logo Design - Estela Dental (Dental Clinic)/Frame 32.png" alt="Estela Dental Logo" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">Estela Dental Clinic</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="TAKMA — Taekwondo">
+            <img src="images/Logo Design - Takma (Taekwondo Brand)/image 17.png" alt="TAKMA Logo" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">TAKMA — Taekwondo</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="KATMA — Variations">
+            <img src="images/Logo Design - Takma (Taekwondo Brand)/image 18.png" alt="KATMA Variations" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">KATMA — Variations</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="ADL Shipping Co.">
+            <img src="images/Logo Design - ADL (Shipping Company)/ADL logo design - Royal Blue Gold 2.png" alt="ADL Logo" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">ADL — Shipping Co.</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="Jackson's Place RV Resort">
+            <img src="images/Logo Design - Jackson's Place (RV Resort)/BrandKit_5 1.png" alt="Jackson's Place Logo" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">Jackson's Place RV Resort</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="Lake Striker — Brand Kit">
+            <img src="images/Logo Design - Lake Striker (RV Park and Resort)/Group 51175.png" alt="Lake Striker Brand" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">Lake Striker — Brand Kit</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="logo" data-title="Lake Striker — Green">
+            <img src="images/Logo Design - Lake Striker (RV Park and Resort)/lake striker green 1.png" alt="Lake Striker Green" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Logo Design</div>
+              <div class="p-name">Lake Striker — Green</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <!-- GRAPHIC -->
+          <div class="p-item" data-category="graphic" data-title="Ryori — Social Media">
+            <img src="images/Graphic Design - Ryori/Facebook-1.png" alt="Ryori Social" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Graphic Design</div>
+              <div class="p-name">Ryori — Social Media</div>
+              <div class="p-tech"><span class="p-tech-pill">Photoshop</span><span class="p-tech-pill">Canva</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="graphic" data-title="Ryori — Promo Banner">
+            <img src="images/Graphic Design - Ryori/Facebook.png" alt="Ryori Banner" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Graphic Design</div>
+              <div class="p-name">Ryori — Promo Banner</div>
+              <div class="p-tech"><span class="p-tech-pill">Photoshop</span><span class="p-tech-pill">Canva</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="graphic" data-title="Ryori — Event Poster">
+            <img src="images/Graphic Design - Ryori/LUMA.png" alt="Ryori Event" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Graphic Design</div>
+              <div class="p-name">Ryori — Event Poster</div>
+              <div class="p-tech"><span class="p-tech-pill">Figma</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="graphic" data-title="Ryori — Facebook Cover">
+            <img src="images/Graphic Design - Ryori/Facebook cover - 1.png" alt="Ryori Cover" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Graphic Design</div>
+              <div class="p-name">Ryori — Facebook Cover</div>
+              <div class="p-tech"><span class="p-tech-pill">Photoshop</span><span class="p-tech-pill">Canva</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <!-- EMAIL -->
+          <div class="p-item" data-category="email" data-title="Email Campaign Vol. 1">
+            <img src="images/Email Marketing Design/Group 51170.png" alt="Email Design 1" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Email Marketing</div>
+              <div class="p-name">Email Campaign — Vol. 1</div>
+              <div class="p-tech"><span class="p-tech-pill">Figma</span><span class="p-tech-pill">HTML/CSS</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="email" data-title="Email Campaign Vol. 2">
+            <img src="images/Email Marketing Design/Group 51171.png" alt="Email Design 2" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Email Marketing</div>
+              <div class="p-name">Email Campaign — Vol. 2</div>
+              <div class="p-tech"><span class="p-tech-pill">Figma</span><span class="p-tech-pill">HTML/CSS</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="email" data-title="Email Campaign Vol. 3">
+            <img src="images/Email Marketing Design/Group 51172.png" alt="Email Design 3" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Email Marketing</div>
+              <div class="p-name">Email Campaign — Vol. 3</div>
+              <div class="p-tech"><span class="p-tech-pill">Figma</span><span class="p-tech-pill">HTML/CSS</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="email" data-title="Email Campaign Vol. 4">
+            <img src="images/Email Marketing Design/Group 51174.png" alt="Email Design 4" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Email Marketing</div>
+              <div class="p-name">Email Campaign — Vol. 4</div>
+              <div class="p-tech"><span class="p-tech-pill">Figma</span><span class="p-tech-pill">HTML/CSS</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <!-- WEB3 / DDC -->
+          <div class="p-item" data-category="web3" data-title="DDC — Blockchain Campus">
+            <img src="images/Davao DeFi Community (Co-Founder, Graphic Designer, Community Lead)/image 28.png" alt="DDC Event" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web3 / Community</div>
+              <div class="p-name">DDC — Blockchain Campus</div>
+              <div class="p-tech"><span class="p-tech-pill">Photoshop</span><span class="p-tech-pill">Canva</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web3" data-title="DDC — Sonic Meetup">
+            <img src="images/Davao DeFi Community (Co-Founder, Graphic Designer, Community Lead)/image 29.png" alt="DDC Sonic" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web3 / Community</div>
+              <div class="p-name">DDC — Sonic Meetup</div>
+              <div class="p-tech"><span class="p-tech-pill">Photoshop</span><span class="p-tech-pill">Canva</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web3" data-title="DDC — Speaker Card">
+            <img src="images/Davao DeFi Community (Co-Founder, Graphic Designer, Community Lead)/image 30.png" alt="DDC Speaker" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Web3 / Community</div>
+              <div class="p-name">DDC — Speaker Card</div>
+              <div class="p-tech"><span class="p-tech-pill">Photoshop</span><span class="p-tech-pill">Canva</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web3" data-title="DeadHeadz NFT">
+            <img src="images/NFT Project - DeadHeadz NFT/image 39.png" alt="DeadHeadz NFT" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">NFT / Web3</div>
+              <div class="p-name">DeadHeadz NFT</div>
+              <div class="p-tech"><span class="p-tech-pill">Illustrator</span><span class="p-tech-pill">OmniFlix</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web3" data-title="DeadHeadz — Mint Page">
+            <img src="images/NFT Project - DeadHeadz NFT/image 40.png" alt="DeadHeadz Mint" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">NFT / Web3</div>
+              <div class="p-name">DeadHeadz — Mint Page</div>
+              <div class="p-tech"><span class="p-tech-pill">OmniFlix</span><span class="p-tech-pill">Web3</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="web3" data-title="DeadHeadz — Gallery">
+            <img src="images/NFT Project - DeadHeadz NFT/image 41.png" alt="DeadHeadz Gallery" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">NFT / Web3</div>
+              <div class="p-name">DeadHeadz — Gallery</div>
+              <div class="p-tech"><span class="p-tech-pill">OmniFlix</span><span class="p-tech-pill">Web3</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <!-- WEBCAST -->
+          <div class="p-item" data-category="webcast" data-title="DDC On-Demand Ep. 18">
+            <img src="images/Webcast Production/image 20.png" alt="DDC On-Demand Ep 18" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Webcast Production</div>
+              <div class="p-name">DDC On-Demand Ep. 18</div>
+              <div class="p-tech"><span class="p-tech-pill">OBS</span><span class="p-tech-pill">Restream</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="webcast" data-title="Przym: Layer 1 for Yield">
+            <img src="images/Webcast Production/image 21.png" alt="Przym Webcast" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Webcast Production</div>
+              <div class="p-name">Przym: Layer 1 for Yield</div>
+              <div class="p-tech"><span class="p-tech-pill">OBS</span><span class="p-tech-pill">Restream</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="webcast" data-title="DDC Live Broadcast">
+            <img src="images/Webcast Production/image 22.png" alt="DDC Live" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Webcast Production</div>
+              <div class="p-name">DDC Live Broadcast</div>
+              <div class="p-tech"><span class="p-tech-pill">OBS</span><span class="p-tech-pill">Restream</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="webcast" data-title="Lido CSM Workshop">
+            <img src="images/Webcast Production/image 23.png" alt="Lido Workshop" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Webcast Production</div>
+              <div class="p-name">Lido CSM Workshop</div>
+              <div class="p-tech"><span class="p-tech-pill">OBS</span><span class="p-tech-pill">Restream</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="webcast" data-title="Real DeFi Opportunities">
+            <img src="images/Webcast Production/image 24.png" alt="DeFi Webcast" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Webcast Production</div>
+              <div class="p-name">Real DeFi Opportunities</div>
+              <div class="p-tech"><span class="p-tech-pill">OBS</span><span class="p-tech-pill">Restream</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+          <div class="p-item" data-category="webcast" data-title="DDC — Starting Soon">
+            <img src="images/Webcast Production/image 26.png" alt="DDC Starting Soon" loading="lazy" />
+            <div class="p-overlay">
+              <div class="p-cat">Webcast Production</div>
+              <div class="p-name">DDC — Starting Soon</div>
+              <div class="p-tech"><span class="p-tech-pill">OBS</span><span class="p-tech-pill">Photoshop</span></div>
+              <div class="p-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+                >Click to view
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- CONTACT -->
+      <section class="contact-section" id="contact">
+        <div class="contact-cta-wrap fu">
+          <p class="tag">Get in Touch</p>
+          <h2 class="section-title" style="margin-bottom:20px">Got a project in mind?<br/><span class="hl">Let's make it happen.</span></h2>
+          <p class="contact-cta-sub">I'm open to freelance web development, collaborations, and remote opportunities. The fastest way to reach me is by email.</p>
+          <a href="mailto:jurrisleuwetolosa@gmail.com" class="contact-email-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            jurrisleuwetolosa@gmail.com
+          </a>
+          <div class="contact-meta">
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Davao City, Philippines
+            </span>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Open to remote &amp; local work
+            </span>
+          </div>
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/jleuwe" target="_blank" rel="noopener" class="soc-btn" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://behance.net/jleuwe" target="_blank" rel="noopener" class="soc-btn" aria-label="Behance">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c0-1.7 1.3-3 3-3h4.5c1.4 0 2.5 1.1 2.5 2.5S10.9 14 9.5 14H2M2 8h10M13 14c0 3 9 3 9 0M13 9h8"/></svg>
+            </a>
+            <a href="https://www.facebook.com/jorislowi/" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer-new">
+        <!-- Top area -->
+        <div class="footer-top">
+          <div class="footer-top-left">
+            <p class="footer-eyebrow">ALL RIGHTS RESERVED.</p>
+            <h2 class="footer-headline">LET'S MAKE IT<br>HAPPEN NOW</h2>
+            <div class="footer-cta-row">
+              <a href="mailto:jurrisleuwetolosa@gmail.com" class="footer-start-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                Email Me
+              </a>
+              <a href="https://www.linkedin.com/in/jleuwe" target="_blank" rel="noopener" class="footer-book-btn">LinkedIn</a>
+            </div>
+          </div>
+          <div class="footer-top-right">
+            <div class="footer-col">
+              <p class="footer-col-label">NAVIGATE</p>
+              <nav class="footer-nav-list">
+                <a href="#home"><span class="footer-star">✦</span>Home</a>
+                <a href="#about"><span class="footer-star">✦</span>About</a>
+                <a href="#services"><span class="footer-star">✦</span>Services</a>
+                <a href="#portfolio"><span class="footer-star">✦</span>Portfolio</a>
+                <a href="#contact"><span class="footer-star">✦</span>Contact</a>
+              </nav>
+            </div>
+            <div class="footer-col">
+              <p class="footer-col-label">CONNECT</p>
+              <nav class="footer-nav-list">
+                <a href="mailto:jurrisleuwetolosa@gmail.com"><span class="footer-star">✦</span>Email</a>
+                <a href="https://www.linkedin.com/in/jleuwe" target="_blank" rel="noopener"><span class="footer-star">✦</span>LinkedIn</a>
+                <a href="https://behance.net/jleuwe" target="_blank" rel="noopener"><span class="footer-star">✦</span>Behance</a>
+                <a href="https://www.facebook.com/jorislowi/" target="_blank" rel="noopener"><span class="footer-star">✦</span>Facebook</a>
+                <a href="http://bleenkz-v2.vercel.app/" target="_blank" rel="noopener"><span class="footer-star">✦</span>Bleenkz ↗</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+          <p class="footer-bottom-copy">© 2026 Jurris Leuwe Tolosa</p>
+          <div class="footer-bottom-time">
+            <span class="footer-star">✦</span>
+            <span id="footer-time">--:-- --, GMT +8</span>
+          </div>
+          <button class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+          </button>
+        </div>
+      </footer>
+    </div>
+    <!-- /site-wrap -->
+
+    <!-- LIGHTBOX -->
+    <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <div class="lb-inner" id="lb-inner">
+        <img id="lb-img" src="" alt="" class="lb-img" />
+      </div>
+      <div class="lb-info">
+        <span id="lb-cat" class="lb-info-cat"></span>
+        <span id="lb-title"></span>
+        <span style="color: var(--c-text3)">&nbsp;· click image to zoom</span>
+      </div>
+      <div class="lb-counter" id="lb-count">1 / 1</div>
+      <button class="lb-close" id="lb-close" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <button class="lb-prev" id="lb-prev" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+      </button>
+      <button class="lb-next" id="lb-next" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+      </button>
+    </div>
+
+    <script>
+    // Live local time (PH = GMT+8)
+    function updateTime() {
+      var el = document.getElementById('footer-time');
+      if (!el) return;
+      var now = new Date();
+      var ph = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
+      var h = ph.getHours(), m = ph.getMinutes(), s = ph.getSeconds();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      el.textContent = h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' ' + ampm + ', GMT +8';
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/bg.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

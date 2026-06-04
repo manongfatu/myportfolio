@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6C5CE7">
+        <animate attributeName="stop-color" values="#6C5CE7;#4F8EF7;#6C5CE7" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#4F8EF7">
+        <animate attributeName="stop-color" values="#4F8EF7;#6C5CE7;#4F8EF7" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <clipPath id="rr">
+      <rect width="32" height="32" rx="8" ry="8"/>
+    </clipPath>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#g1)" clip-path="url(#rr)"/>
+  <!-- "JT" monogram — clean outline style -->
+  <text x="5" y="23" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="-1">JT</text>
+  <!-- subtle code brackets -->
+  <path d="M4 10 L2 16 L4 22" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M28 10 L30 16 L28 22" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>
