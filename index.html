@@ -17,65 +17,116 @@
       })();
     </script>
     <script>
-      // Animated canvas favicon
+      // ── Animated Canvas Favicon ──────────────────────────────
+      // Design: rounded square bg with animated gradient,
+      // spinning dashed arc, "JL" monogram, pulsing dot
       (function () {
         function animFavicon() {
-          var c = document.createElement("canvas");
-          c.width = c.height = 64;
-          var ctx = c.getContext("2d");
-          var hue = 260,
-            step = 0;
+          var S = 64;
+          var c = document.createElement('canvas');
+          c.width = c.height = S;
+          var ctx = c.getContext('2d');
+
+          // Animation state
+          var angle = 0;         // spinning arc rotation
+          var pulse = 0;         // pulsing dot phase
+          var gradHue = 260;     // gradient hue shift
+
+          function roundRect(x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.arcTo(x + w, y, x + w, y + r, r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+            ctx.lineTo(x + r, y + h);
+            ctx.arcTo(x, y + h, x, y + h - r, r);
+            ctx.lineTo(x, y + r);
+            ctx.arcTo(x, y, x + r, y, r);
+            ctx.closePath();
+          }
+
           function draw() {
-            hue = (hue + 0.8) % 360;
-            var g = ctx.createLinearGradient(0, 0, 64, 64);
-            g.addColorStop(0, "hsl(" + hue + ",75%,60%)");
-            g.addColorStop(1, "hsl(" + (hue + 60) + ",85%,55%)");
-            ctx.clearRect(0, 0, 64, 64);
-            // rounded rect
-            ctx.beginPath();
-            var r = 12;
-            ctx.moveTo(r, 0);
-            ctx.lineTo(64 - r, 0);
-            ctx.arcTo(64, 0, 64, r, r);
-            ctx.lineTo(64, 64 - r);
-            ctx.arcTo(64, 64, 64 - r, 64, r);
-            ctx.lineTo(r, 64);
-            ctx.arcTo(0, 64, 0, 64 - r, r);
-            ctx.lineTo(0, r);
-            ctx.arcTo(0, 0, r, 0, r);
-            ctx.fillStyle = g;
+            ctx.clearRect(0, 0, S, S);
+
+            // — Background gradient (slowly shifting hue)
+            gradHue = (gradHue + 0.5) % 360;
+            var bg = ctx.createLinearGradient(0, 0, S, S);
+            bg.addColorStop(0, 'hsl(' + gradHue + ', 70%, 58%)');
+            bg.addColorStop(1, 'hsl(' + ((gradHue + 50) % 360) + ', 80%, 52%)');
+            roundRect(0, 0, S, S, 14);
+            ctx.fillStyle = bg;
             ctx.fill();
-            // JT text
-            ctx.font = "bold 28px system-ui,sans-serif";
-            ctx.fillStyle = "rgba(255,255,255,0.95)";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText("JT", 32, 34);
-            // brackets
-            ctx.strokeStyle = "rgba(255,255,255,0.35)";
-            ctx.lineWidth = 2.5;
-            ctx.lineCap = "round";
+
+            // — Subtle inner shine
+            var shine = ctx.createLinearGradient(0, 0, 0, S * 0.6);
+            shine.addColorStop(0, 'rgba(255,255,255,0.12)');
+            shine.addColorStop(1, 'rgba(255,255,255,0)');
+            roundRect(0, 0, S, S, 14);
+            ctx.fillStyle = shine;
+            ctx.fill();
+
+            // — Spinning dashed arc
+            ctx.save();
+            ctx.translate(S / 2, S / 2);
+            ctx.rotate(angle);
+            angle += 0.04;
+            var arcR = 28;
+            var arcGrad = ctx.createLinearGradient(-arcR, 0, arcR, 0);
+            arcGrad.addColorStop(0, 'rgba(255,255,255,0.8)');
+            arcGrad.addColorStop(0.5, 'rgba(255,255,255,0.3)');
+            arcGrad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.strokeStyle = arcGrad;
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.setLineDash([14, 42]);
             ctx.beginPath();
-            ctx.moveTo(8, 18);
-            ctx.lineTo(4, 32);
-            ctx.lineTo(8, 46);
+            ctx.arc(0, 0, arcR, 0, Math.PI * 2);
             ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.restore();
+
+            // — "J" — large, bold, centered
+            ctx.font = '900 36px "Arial Black", Arial, sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,0.97)';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'alphabetic';
+            ctx.fillText('J', 32, 45);
+
+            // — Pulsing dot (bottom-right)
+            pulse += 0.07;
+            var dotR = 4 + Math.sin(pulse) * 1.2;
+            var dotAlpha = 0.75 + Math.sin(pulse) * 0.25;
+            // Outer glow ring
+            var glowR = dotR + 3 + Math.sin(pulse) * 2;
+            var glowAlpha = (0.4 + Math.sin(pulse) * 0.2) * (1 - (glowR - dotR) / 8);
             ctx.beginPath();
-            ctx.moveTo(56, 18);
-            ctx.lineTo(60, 32);
-            ctx.lineTo(56, 46);
-            ctx.stroke();
-            // update favicon
-            var link = document.querySelector('link[rel="icon"]') || document.createElement("link");
-            link.rel = "icon";
-            link.href = c.toDataURL();
-            if (!link.parentNode) document.head.appendChild(link);
+            ctx.arc(52, 50, glowR, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255,255,255,' + Math.max(0, glowAlpha) + ')';
+            ctx.fill();
+            // Solid dot
+            ctx.beginPath();
+            ctx.arc(52, 50, dotR, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255,255,255,' + dotAlpha + ')';
+            ctx.fill();
+
+            // — Update favicon link
+            var link = document.querySelector('link[rel="icon"]');
+            if (!link) {
+              link = document.createElement('link');
+              link.rel = 'icon';
+              document.head.appendChild(link);
+            }
+            link.href = c.toDataURL('image/png');
+
             requestAnimationFrame(draw);
           }
+
           draw();
         }
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", animFavicon);
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', animFavicon);
         } else {
           animFavicon();
         }
