@@ -1947,3 +1947,188 @@ footer {
     padding: 14px 24px;
   }
 }
+
+/* ══════════════════════════════════════════
+   WORKFLOW SECTION
+══════════════════════════════════════════ */
+
+.workflow-section {
+  padding: 96px 56px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.wf-intro {
+  font-size: 0.95rem;
+  color: var(--c-text2);
+  line-height: 1.75;
+  margin-top: 16px;
+  max-width: 580px;
+}
+
+.wf-flow {
+  margin-top: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Arrow connector */
+.wf-arrow {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0;
+  color: var(--c-text3);
+  flex-shrink: 0;
+}
+
+/* Card */
+.wf-card {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color var(--t) var(--ease),
+    background var(--t) var(--ease);
+}
+
+.wf-card:hover {
+  border-color: var(--c-border-a);
+  background: var(--c-card-h);
+}
+
+.wf-card:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* Card header — always visible */
+.wf-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  user-select: none;
+}
+
+.wf-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+  width: 36px;
+}
+
+.wf-card-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.wf-phase-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.wf-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.wf-chevron {
+  color: var(--c-text3);
+  flex-shrink: 0;
+  transition: transform var(--t) var(--ease);
+}
+
+.wf-card[aria-expanded="true"] .wf-chevron {
+  transform: rotate(180deg);
+}
+
+/* Card body — collapsible */
+.wf-card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s var(--ease), padding 0.28s var(--ease);
+  padding: 0 24px;
+}
+
+.wf-card[aria-expanded="true"] .wf-card-body {
+  max-height: 320px;
+  padding: 0 24px 22px;
+}
+
+/* Bullet list */
+.wf-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 16px;
+}
+
+.wf-bullets li {
+  font-size: 0.875rem;
+  color: var(--c-text2);
+  line-height: 1.6;
+  padding-left: 18px;
+  position: relative;
+}
+
+.wf-bullets li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--c-text3);
+  font-size: 0.75rem;
+  top: 2px;
+}
+
+/* Tool pills */
+.wf-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wf-tool-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--c-border);
+  color: var(--c-text3);
+  background: var(--c-bg2);
+  transition: border-color var(--t), color var(--t);
+}
+
+.wf-card[aria-expanded="true"] .wf-tool-pill {
+  border-color: var(--c-border-a);
+  color: var(--c-text2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .workflow-section {
+    padding: 64px 24px;
+  }
+
+  .wf-num {
+    font-size: 1.2rem;
+    width: 28px;
+  }
+
+  .wf-title {
+    font-size: 0.92rem;
+  }
+}

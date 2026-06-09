@@ -181,3 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* ══════════════════════════════════════════
+   WORKFLOW ACCORDION
+══════════════════════════════════════════ */
+(function () {
+  var cards = document.querySelectorAll('.wf-card');
+
+  function toggle(card) {
+    var isOpen = card.getAttribute('aria-expanded') === 'true';
+    // close all first
+    cards.forEach(function (c) { c.setAttribute('aria-expanded', 'false'); });
+    // open this one if it was closed
+    if (!isOpen) card.setAttribute('aria-expanded', 'true');
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () { toggle(card); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card); }
+    });
+  });
+}());
